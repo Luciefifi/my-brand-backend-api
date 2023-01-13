@@ -2,6 +2,7 @@ import express from "express";
 import dbConn from "./database/dBase";
 import cors from "cors";
 import dotenv from "dotenv";
+import messageRoute from "./Routes/messageRoute";
 
 
 const app = express();
@@ -16,6 +17,8 @@ dbConn();
 app.listen(port ,()=>{
     console.log("The app is listening on : " +port)
 })
+
+app.use("/api", messageRoute)
 
 
 
