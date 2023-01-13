@@ -4,5 +4,6 @@ import messageController from "../Controllers/messageController";
 const messageRoute =express.Router();
 
 messageRoute.post("/createMessage",messageController.createMessage);
+messageRoute.get("/getSingleMessage/:id",messageController.getSingleMessage);
 
 export default messageRoute;

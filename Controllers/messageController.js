@@ -17,6 +17,16 @@ class messageController {
           res.status(401).json(error.message);
         }
       }
+
+      static async getSingleMessage(req,res) {
+        try {
+       const message=await Message.findById(req.param.id);
+       res.status(200).json(message)
+        }catch (error){
+            res.status(404).json(error.message);
+        }
+    }
+    
       }
 
       export default messageController;
