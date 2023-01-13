@@ -25,10 +25,12 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/register": "^7.18.9",
     "@babel/runtime": "^7.20.7",
+    "cloudinary": "^1.33.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^6.8.3"
+    "mongoose": "^6.8.3",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "@babel/node": "^7.20.7",
