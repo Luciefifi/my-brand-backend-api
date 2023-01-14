@@ -6,6 +6,10 @@ const blogRoute = express.Router();
 
 blogRoute.post("/create",upload.single("image"),blogController.createBlog);
 
+blogRoute.put("/updatePost/:id",upload.single("image"),blogController.updateBlog);
+
+
+
 
 
 
