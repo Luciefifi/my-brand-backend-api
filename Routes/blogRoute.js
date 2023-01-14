@@ -4,9 +4,11 @@ import upload from "../utilis/multer";
 
 const blogRoute = express.Router();
 
-blogRoute.post("/create",upload.single("image"),blogController.createBlog);
+blogRoute.post("/create",upload.single("image"),blogController.createBlog); // create new blog
 
-blogRoute.put("/updatePost/:id",upload.single("image"),blogController.updateBlog);
+blogRoute.put("/updatePost/:id",upload.single("image"),blogController.updateBlog); //update existing blog
+
+blogRoute.get("/getSingleBlog/:id",blogController.getSingleBlog); //get single blog
 
 
 

@@ -39,6 +39,22 @@ class blogController{
             res.status(500).json({ error: error.message });
           }
         }
+
+
+        // get single blog
+
+        static async getSingleBlog(req, res) {
+        try {
+
+          const singleBlog = await Blog.findById(req.params.id)
+          res.status(200).json({
+            status:"success",
+            data: singleBlog
+          });
+        } catch (error) {
+          res.status(500).json({ error: error.message });
+        }
+      }
     
     
 }
