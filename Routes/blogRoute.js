@@ -10,6 +10,8 @@ blogRoute.put("/updatePost/:id",upload.single("image"),blogController.updateBlog
 
 blogRoute.get("/getSingleBlog/:id",blogController.getSingleBlog); //get single blog
 
+blogRoute.get("/getAllBlogs",blogController.getAllBlogs); //Get all blogs
+
 
 
 

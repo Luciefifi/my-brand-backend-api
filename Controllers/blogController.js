@@ -55,6 +55,22 @@ class blogController{
           res.status(500).json({ error: error.message });
         }
       }
+
+      //get all blogs
+
+      static async getAllBlogs(req, res) {
+        try {
+
+          const allBlogs = await Blog.find()
+          res.status(200).json({
+            status:"success",
+            data: allBlogs
+          });
+        } catch (error) {
+          res.status(500).json({ error: error.message });
+        }
+      }
+
     
     
 }
