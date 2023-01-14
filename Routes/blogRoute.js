@@ -12,6 +12,8 @@ blogRoute.get("/getSingleBlog/:id",blogController.getSingleBlog); //get single b
 
 blogRoute.get("/getAllBlogs",blogController.getAllBlogs); //Get all blogs
 
+blogRoute.delete("/deleteBlog/:id",blogController.deleteBlog); //Delete a blog
+
 
 
 
