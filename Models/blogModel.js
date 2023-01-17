@@ -11,7 +11,7 @@ const blogSchema = mongoose.Schema({
       },
     image: {
       type: String,
-      required: true,
+      
     },
     blogBody: {
       type: String,
