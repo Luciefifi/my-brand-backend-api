@@ -6,16 +6,16 @@ import { validateBlog } from "../validations/blogValidation";
 const blogRoute = express.Router();
 
 blogRoute.post("/create",upload.single("image"),
-(req, res) => {
-    const { error, value } = validateBlog(req.body);
+// (req, res) => {
+//     const { error, value } = validateBlog(req.body);
   
-    if (error) {
-      console.log(error);
-      return res.send(error.details);
-    }
+//     if (error) {
+//       console.log(error);
+//       return res.send(error.details);
+//     }
   
-    res.send("Successfully created a blog");
-  },
+//     res.send("Successfully created a blog");
+//   },
 
 blogController.createBlog); // create new blog
 
