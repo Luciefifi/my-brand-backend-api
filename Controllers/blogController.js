@@ -1,5 +1,8 @@
 import Blog from "../Models/blogModel";
+<<<<<<< HEAD
 import { validateBlog } from "../validations/blogValidation";
+=======
+>>>>>>> feat(blog validation):
 
 class blogController{
     static async createBlog(req,res){
@@ -14,6 +17,7 @@ class blogController{
                 blogBody:req.body.blogBody
             });
             await blog.save();
+<<<<<<< HEAD
             (req, res) => {
     const { error, value } = validateBlog(req.body);
   
@@ -24,6 +28,8 @@ class blogController{
   
     res.send("blogs are validated");
   },
+=======
+>>>>>>> feat(blog validation):
             res.status(201).json({"status":"success", "data": blog});
 
         } catch (error) {
