@@ -1,9 +1,16 @@
 import Blog from "../Models/blogModel";
-import { validateBlog } from "../validations/blogValidation";
+import blogValidationSchema from "../validations/blogValidation";
 
 class blogController{
     static async createBlog(req,res){
         try {
+
+          // Blog validation
+          const {error} = blogValidationSchema.validate(req.body);
+
+          if (error)
+              return res.status(400).json({"validationError": error.details[0].message})
+
             
             const imageUrl = `http://localhost:5000/images/${req.file.filename}`
 
@@ -14,16 +21,7 @@ class blogController{
                 blogBody:req.body.blogBody
             });
             await blog.save();
-            (req, res) => {
-    const { error, value } = validateBlog(req.body);
-  
-    if (!error) {
-      console.log(error);
-      return res.send(error.details);
-    }
-  
-    res.send("blogs are validated");
-  },
+
             res.status(201).json({"status":"success", "data": blog});
 
         } catch (error) {
