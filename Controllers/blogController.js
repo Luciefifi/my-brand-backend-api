@@ -1,12 +1,23 @@
 import Blog from "../Models/blogModel";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { validateBlog } from "../validations/blogValidation";
 =======
 >>>>>>> feat(blog validation):
+=======
+import blogValidationSchema from "../validations/blogValidation";
+>>>>>>> feat(authentication):
 
 class blogController{
     static async createBlog(req,res){
         try {
+
+          // Blog validation
+          const {error} = blogValidationSchema.validate(req.body);
+
+          if (error)
+              return res.status(400).json({"validationError": error.details[0].message})
+
             
             const imageUrl = `http://localhost:5000/images/${req.file.filename}`
 
@@ -17,6 +28,7 @@ class blogController{
                 blogBody:req.body.blogBody
             });
             await blog.save();
+<<<<<<< HEAD
 <<<<<<< HEAD
             (req, res) => {
     const { error, value } = validateBlog(req.body);
@@ -30,6 +42,9 @@ class blogController{
   },
 =======
 >>>>>>> feat(blog validation):
+=======
+
+>>>>>>> feat(authentication):
             res.status(201).json({"status":"success", "data": blog});
 
         } catch (error) {
