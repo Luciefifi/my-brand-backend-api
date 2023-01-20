@@ -1,14 +1,45 @@
-const Joi = require("joi");
 
-const validator = (schema) => (payload) =>
-  schema.validate(payload, { abortEarly: false });
+import Joi from 'joi';
 
-const blogSchema = Joi.object({
-  title: Joi.string().min(5).max(10).required(),
- description: Joi.string().min(10).max(15).required(),
- image:Joi.any().required,
- blogBody: Joi.string().min(10).max(15).required(),
+const blogValidationSChema = Joi.object ({
 
-});
+    title: Joi.string().required().label("Title").regex(/^[A-Za-z ]+$/).messages({
+        "string.pattern.base": "The titles can not include numbers and special characters",
+        "any.required": "The title field can not be empty"
+    }),
+    description: Joi.string().required().label("description").messages({
+      "any.required": "The  description field can not be empty"
+  }),
 
-exports.validateBlog = validator(blogSchema);
+  image: Joi.string().messages({
+    "any.required": "The image field can not be empty"
+}),
+blogBody: Joi.string().required().messages({
+  "any.required": "The  blog body field can not be empty"
+}),
+  
+    // authorName: joi.string().required().label("Athor Name").regex(/^[A-Za-z ]+$/).messages({
+    //     "string.pattern.base": "The title can not include numbers and special characters",
+    //     "string.empty": "The name field can not be empty"
+    // }),
+    // category: joi.string().required().label("category").regex(/^[A-Za-z ]+$/).messages({
+    //     "string.pattern.base": "The title can not include numbers and special characters",
+    //     "string.empty": "The category field can not be empty"
+    // }),
+    // faculty: joi.string().required().label("category").regex(/^[A-Za-z ]+$/).messages({
+    //     "string.pattern.base": "The title can not include numbers and special characters",
+    //     "string.empty": "The faculty field can not be empty"
+    // }),
+    // authorImage: joi.string().label("author").messages({
+    //     "string.empty": "Please add the author's picture"
+    // }),
+    // body: joi.string().required().messages({
+    //     "string.empty": "The body field can not be empty"
+    // }),
+    // imgLink: joi.string().label("author").messages({
+    //     "string.empty": "Please add the post's picture"
+    // })
+
+})
+
+export default  blogValidationSChema;
