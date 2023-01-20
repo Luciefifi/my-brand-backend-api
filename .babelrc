@@ -1,12 +1,15 @@
 {
-    "presets": ["@babel/preset-env"],
-    "plugins": [
-      ["@babel/plugin-transform-runtime",
-      {
-  
-        "regenerator" : true
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "node": "current"
       }
-      ],
-      ["@babel/plugin-proposal-class-properties"]
-    ]
-  }
+    }]
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread",
+    ["@babel/transform-runtime"],
+    ["istanbul"]
+  ]
+}
