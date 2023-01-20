@@ -11,7 +11,7 @@ class messageController {
             message:req.body.message,
           });
           await message.save();
-          res.status(201).json(message);
+          res.status(201).json(message); 
           console.log("message sent!!!");
         } catch (error) {
           res.status(401).json(error.message);
