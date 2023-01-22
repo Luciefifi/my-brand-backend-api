@@ -1,5 +1,9 @@
 # repository name
+<<<<<<< HEAD
 my-brand-backend-api
+=======
+server
+>>>>>>> feat(blog validation):
 
 # description 
 this is the server of my brand , my brand will help the people to  know alot about about me such as my skills , experiences , my blog and they can contact me easily .   user can send contact message and the admin can also retrieve that message that was sent by user . an admin can also create , update , delete and retrieve the blog post . user can also view the blog post as well
@@ -47,3 +51,9 @@ in your terminal type npm run dev
 
 # Testing 
 use postman to test endpoints
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> feat(blog validation):
