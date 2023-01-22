@@ -79,6 +79,43 @@ describe("Get all posts", () => {
 });
 
 
+// update a blog
+
+describe('Update Blog', () => {
+    it('should update a blog post', (done) => {
+        const blogId = '63c90daacda571d9b2a51134';
+        // const image = fs.readFileSync('/Users/andelarwanda/Desktop/My Projects/server/images/1674125400537pexels-harry-dona-2338407 (1).jpg.zip')
+        const image = 'http://localhost:5000/images/1673610548664brand.PNG'
+
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDE5OTk3NSwiZXhwIjoxNjc0MjAzNTc1fQ.YGLml8i90bIcDUfMxF3hpKr9Q55YngG0t2vNsj8d3FI"
+
+      
+
+        const updatedData = {
+            title: 'Updated Blog Title',
+            description: 'This is an updated blog post',
+            image:`${image}`,
+            blogBody: 'This is my blog'
+        };
+
+        chai.request(app)
+            .put(`/api/updatePost/${blogId}`)
+            .set('auth_token',`${token}`)
+            .send(updatedData)
+
+            .end((err, res) => {
+                // console.log(res.body)
+                if (err) {
+                    console.log(err);
+                  }
+                res.should.have.status(200)
+                res.body.should.have.property('status').eql('success');
+                res.body.should.have.property('title', updatedData.title);
+                res.body.should.have.property('content', updatedData.content);
+                done();
+            });
+    });
+});
 
 
   
