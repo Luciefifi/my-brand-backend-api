@@ -1,10 +1,10 @@
 import express from "express";
-import dbConn from "./database/dBase";
+import dbConn from "./src/database/dBase";
 import cors from "cors";
 import dotenv from "dotenv";
-import messageRoute from "./Routes/messageRoute";
-import blogRoute from "./Routes/blogRoute";
-import userRoute from "./Routes/userRoute";
+import messageRoute from "./src/Routes/messageRoute";
+import blogRoute from "./src/Routes/blogRoute";
+import userRoute from "./src/Routes/userRoute";
 
             
 const app = express();

@@ -1,6 +1,6 @@
 import express from "express";
 import messageController from "../Controllers/messageController";
-import verifyAdmin from "../../middleware/verifyAdmin";
+import verifyAdmin from "../middleware/verifyAdmin";
 
 const messageRoute =express.Router();
 
