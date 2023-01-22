@@ -78,6 +78,25 @@ describe("Get all posts", () => {
     });
 });
 
+//delete blog test
+
+it('it should delete a blog', (done) => {
+
+    const id = '63ccb9ebed4900d8f34f21f7';
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDM5MjIyNCwiZXhwIjoxNjc0NTY1MDI0fQ.QNHmj_ipOe9_iLvjq6gK38LliFrE_gJKYisd-r4MZFU"
+
+
+      chai.request(app)
+      .delete(`/api/deleteBlog/${id}`)
+      .set('auth_token',`${token}`)
+      .end((error, res) => {
+        console.log(res.body)
+        chai.expect(res).to.have.status(200);
+        done();
+      });
+  });
+        
+   
 
 
 
