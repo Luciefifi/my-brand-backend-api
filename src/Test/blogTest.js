@@ -1,5 +1,6 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
+import { expect } from "chai";
 import app from "../..";
 import fs from 'fs'
 
@@ -49,6 +50,33 @@ describe("Get all posts", () => {
        
     });
   });
+
+   //test get single post
+
+   describe("get single blog by id", () => {
+    it("It should get a single blog by id" , (done) => {
+        const id = "63ccb9ebed4900d8f34f21f7"
+        chai.request(app)
+        .get(`/api/getSingleBlog/${id}`)
+        .end((err,res)=>{
+            if (err) return done(err);
+            console.log(res.body)
+            expect(res.status).to.equal(200);
+            expect(res.body).to.have.property('status').eql('success');
+            expect(res.body).to.have.property('data');
+            expect(res.body.data).to.have.property('_id').eql(id);
+            // expect(res.body.data).to.have.property('title');
+            // expect(res.body.data).to.have.property('description');
+            // expect(res.body.data).to.have.property('image');
+            // expect(res.body.data).to.have.property('blogBody');
+
+
+
+          
+            done();
+        });
+    });
+});
 
 
 
