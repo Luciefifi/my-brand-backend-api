@@ -85,6 +85,7 @@ class blogController{
         try {
 
           const singleBlog = await Blog.findById(req.params.id)
+
           if(!singleBlog)
           {
             res.status(404).json({
