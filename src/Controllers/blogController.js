@@ -1,12 +1,6 @@
 import Blog from "../Models/blogModel";
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { validateBlog } from "../validations/blogValidation";
-=======
->>>>>>> feat(blog validation):
-=======
 import blogValidationSchema from "../validations/blogValidation";
->>>>>>> feat(authentication):
+
 
 class blogController{
     static async createBlog(req,res){
@@ -16,7 +10,9 @@ class blogController{
           const {error} = blogValidationSchema.validate(req.body);
 
           if (error)
-              return res.status(400).json({"validationError": error.details[0].message})
+              return res.status(400).json({
+                status:"fail",
+                "validationError": error.details[0].message})
 
             
             const imageUrl = `http://localhost:5000/images/${req.file.filename}`
@@ -28,27 +24,27 @@ class blogController{
                 blogBody:req.body.blogBody
             });
             await blog.save();
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             (req, res) => {
     const { error, value } = validateBlog(req.body);
   
     if (!error) {
       console.log(error);
-      return res.send(error.details);
+      return res.status(400).json({
+        status:"fail",
+        "message": error.details})
+      
     }
   
     res.send("blogs are validated");
   },
-=======
->>>>>>> feat(blog validation):
-=======
 
->>>>>>> feat(authentication):
             res.status(201).json({"status":"success", "data": blog});
 
         } catch (error) {
-            res.status(500).json({"error": error.message});
+            res.status(500).json({
+              staus : "fail",
+              "error": error.message});
         }
     }
 
@@ -63,12 +59,22 @@ class blogController{
               image: imageUrl,
               blogBody:req.body.blogBody
             }},{new:true});
+
+            if(!updatedBlog){
+              res.status(200).json({
+                status:"fail",
+                message: "blog not found"
+              });
+              return;
+            }
             res.status(200).json({
               status:"success",
               data:updatedBlog
             });
           } catch (error) {
-            res.status(500).json({ error: error.message });
+            res.status(500).json({ 
+              status:"fail",
+              error: error.message });
           }
         }
 
@@ -79,12 +85,22 @@ class blogController{
         try {
 
           const singleBlog = await Blog.findById(req.params.id)
+          if(!singleBlog)
+          {
+            res.status(404).json({
+              status: "fail",
+              message: "blog not found"
+            })
+            return;
+          }
           res.status(200).json({
             status:"success",
             data: singleBlog
           });
         } catch (error) {
-          res.status(500).json({ error: error.message });
+          res.status(500).json({
+            status:"fail",
+             error: error.message });
         }
       }
 
@@ -94,12 +110,14 @@ class blogController{
         try {
 
           const allBlogs = await Blog.find()
-          res.status(200).json({
+         res.status(200).json({
             status:"success",
             data: allBlogs
           });
         } catch (error) {
-          res.status(500).json({ error: error.message });
+          res.status(500).json({ 
+            status: "fail",
+            error: error.message });
         }
       }
 
@@ -107,13 +125,25 @@ class blogController{
 
       static async deleteBlog(req, res) {
         try {
-
-          const deletedBlog = await Blog.findByIdAndDelete(req.params.id)
+          const blog = await Blog.findById(req.params.id)
+          if(!blog){
+            res.status(404).json({
+              status :"fail",
+              error :"blog not found"
+            });
+            return;
+          }
+    
+          await blog.remove()
           res.status(200).json({
-            status:"Blog deleted successfully",
+            status:"success",
+            message:"Blog deleted successfully",
           });
+          
         } catch (error) {
-          res.status(500).json({ error: error.message });
+          res.status(500).json({
+            staus : "fail",
+             error: error.message });
         }
       }
 

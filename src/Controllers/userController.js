@@ -25,11 +25,15 @@ class UserController{
 
             });
             await user.save();
-                res.status(201).json({"registeredUser": user}); 
+            res.status(201).json({
+                status: "success", 
+                registeredUser: user});
                 console.log("User registered successfully!");
             
         } catch(err){
-            res.status(500).json(err.message);
+            res.status(500).json(
+               { status:"fail",
+                error: err.message});
         }
 
     }
@@ -42,20 +46,26 @@ class UserController{
             const user = await User.findOne({email:req.body.email})
             
             if (!user) {
-                return res.status(400).json({"InvalidCredentials":"Invalid email or password"});
+                return res.status(400).json({
+                    status:"fail",
+                    "InvalidCredentials":"Invalid email or password"});
             }
             //check if password is correct
             const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
             if (!isPasswordValid) {
-                return res.status(400).json({"InvalidCredentials":"Invalid email or password"});
+                return res.status(400).json({
+                    status:"fail",
+                    "InvalidCredentials":"Invalid email or password"});
             }
             //create token
             const token = jwt.sign({ id:user._id }, process.env.JWT_SECRET, {
-                expiresIn: "1h",
+                expiresIn: "48h",
             });
             res.header("auth_token", token)
 
-            res.status(200).json({"successMessage":"LoggedIn successfully!", "token": token});
+            res.status(200).json({
+                status:"success",
+                "successMessage":"LoggedIn successfully!", "token": token});
     
                                            
             
@@ -69,24 +79,44 @@ class UserController{
 
         
           //get single user
-          static async getSingleUser(req,res) {
+          static async getSingleUser(req, res) {
             try {
-           const user=await User.findById(req.param.id);
-           res.status(200).json(user)
-            }catch (error){
-                res.status(404).json(error.message);
-            }
-        }
+    
+              const singleUser = await User.findById(req.params.id)
+              if(!singleUser)
+              {
+                res.status(404).json({
+                    status:"fail",
+                    message:"user not found!!!"
+                  });
+                  return;
+              }
 
+              res.status(200).json({
+                status:"success",
+                data: singleUser
+              });
+            } catch (error) {
+              res.status(500).json({ 
+                
+                status:"fail",
+                error: error.message });
+            }
+          }
 
             
     //get all users
         static async getAllUsers(req,res) {
             try {
            const users = await User.find();
-           res.status(200).json({"allUsers":users} )
+           res.status(200).json({
+            status:"success",
+            "allUsers":users})
             }catch (error){
-                res.status(404).json(error.message);
+                res.status(404).json({
+                    status:"fail",
+                    error:error.message 
+                });
             }
         }
 

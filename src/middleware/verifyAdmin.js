@@ -8,7 +8,9 @@ const verifyAdmin = async(req, res, next) => {
 
     const verifyToken = req.headers["auth_token"];
     if (!verifyToken) {
-      return res.status(401).json( {"unauthorizedAccess":"Access denied, Please login!"} );
+      return res.status(401).json({
+        status:"fail",
+        unauthorizedAccess:"Access denied, Please login!"});
     }
     try {
       const decodedToken = jwt.verify(verifyToken, process.env.JWT_SECRET);
@@ -18,12 +20,17 @@ const verifyAdmin = async(req, res, next) => {
       const userRole = loggeInUser.role
 
       if(userRole !== "admin"){
-        return res.status(401).json({"unauthorized": "You are not allowed to peform this action"})
+        return res.status(401).json({
+          status:"fail",
+          unauthorized: "You are not allowed to peform this action"})
       }
 
       next();
     } catch (err) {
-      res.status(500).json(err.message);
+      res.status(500).json({
+        status:"fail",
+        errror:err.message
+      });
     }
   };
 
