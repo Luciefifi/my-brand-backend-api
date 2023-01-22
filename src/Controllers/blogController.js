@@ -84,7 +84,7 @@ class blogController{
         static async getSingleBlog(req, res) {
         try {
 
-          const singleBlog = await Blog.findById(req.params.id)
+          const singleBlog = await Blog.findById(req.params.id ,{timeout: 300000}) 
 
           if(!singleBlog)
           {

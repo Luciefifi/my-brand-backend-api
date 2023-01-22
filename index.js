@@ -15,7 +15,6 @@ dotenv.config();
 
 const port=process.env.PORT || 5000;
 dbConn();
-
 app.listen(port ,()=>{
     console.log("The app is listening on : " +port)
 })
