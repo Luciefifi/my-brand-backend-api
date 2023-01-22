@@ -25,6 +25,8 @@ app.use("/api" , blogRoute);
 app.use("/images", express.static("images"));
 app.use('/api', userRoute )
 
+export default app
+
 
 
 
