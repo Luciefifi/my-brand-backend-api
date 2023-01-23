@@ -10,7 +10,7 @@ describe('User Registration', () => {
     it('should register a user', (done) => {
       chai.request(app)
         .post('/api/createUser')
-        .send({firstName: 'angeline', lastName: 'callinee', email: 'angellicaline@gmail.com', password: '12345678',repeatPassword:'12345678'})
+        .send({firstName: 'angelineea', lastName: 'callineeea', email: 'angellicalineea@gmail.com', password: '12345678',repeatPassword:'12345678'})
         .end((err, res) => {
             if (err) return done(err);
             console.log(res.body)
@@ -83,3 +83,26 @@ describe("get single user by id", () => {
         });
     });
 });
+
+
+
+describe("Get all users", () => {
+    it("It Should get all users", (done) => {
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDM4OTk2MSwiZXhwIjoxNjc0NTYyNzYxfQ.IwS0YBb6XIVp18cCTiAt-gPe4glIH_Ampnfb75DH5uw"
+
+      chai
+        .request(app)
+       .get("/api/getAllusers")
+       .set('auth_token',`${token}`)
+        .end((err, res) => {
+            console.log(res.body)
+          res.should.have.status(200);
+          res.body.should.have.property('status')
+          res.body.should.have.property('allUsers')
+
+          
+          done();
+        })
+       
+    });
+  });
