@@ -53,3 +53,33 @@ describe('Login', () => {
         });
     });
 });
+
+//get single user 
+describe("get single user by id", () => {
+    it("It should get a single user  by specified  id" , (done) => {
+        const id = "63ce167e407b9bf016281b8f"
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDM4OTk2MSwiZXhwIjoxNjc0NTYyNzYxfQ.IwS0YBb6XIVp18cCTiAt-gPe4glIH_Ampnfb75DH5uw"
+
+        chai.request(app)
+        .get(`/api/getSingleUser/${id}`)
+       .set('auth_token',`${token}`)
+        .end((err,res)=>{
+            if (err) return done(err);
+            console.log(res.body)
+            expect(res.status).to.equal(200);
+            expect(res.body).to.have.property('status').eql('success');
+            expect(res.body).to.have.property('data');
+           expect(res.body.data).to.have.property('firstName')
+            expect(res.body.data).to.have.property('lastName');
+             expect(res.body.data).to.have.property('email');
+          expect(res.body.data).to.have.property('password');
+          expect(res.body.data).to.have.property('repeatPassword');
+         
+
+
+
+          
+            done();
+        });
+    });
+});
