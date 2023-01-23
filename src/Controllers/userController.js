@@ -111,7 +111,7 @@ class UserController{
            const users = await User.find();
            res.status(200).json({
             status:"success",
-            "allUsers":users})
+            allUsers:users})
             }catch (error){
                 res.status(404).json({
                     status:"fail",

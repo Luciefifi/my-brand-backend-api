@@ -4,7 +4,7 @@
   "description": "server",
   "main": "index.js",
   "scripts": {
-    "test": "  mocha --recursive --exit --timeout 500000  --require @babel/register src/test/**/*.js",
+    "test": " nyc  mocha --recursive --exit --timeout 500000  --require @babel/register src/test/**/*.js",
     "dev": "nodemon --exec babel-node index.js",
     "start": "node --experimental-specifier-resolution=node index.js"
   },
@@ -44,6 +44,7 @@
     "chai": "^4.3.7",
     "chai-http": "^4.3.0",
     "mocha": "^10.2.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "nyc": "^15.1.0"
   }
 }
