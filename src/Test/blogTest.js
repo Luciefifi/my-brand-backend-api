@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 describe('create a blog', () => {
     it('should create a new blog post with all fields filled', (done) => {
         const image = fs.readFileSync('/Users/andelarwanda/Desktop/My Projects/server/src/images/1673610548664brand.PNG')
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDM4OTk2MSwiZXhwIjoxNjc0NTYyNzYxfQ.IwS0YBb6XIVp18cCTiAt-gPe4glIH_Ampnfb75DH5uw"
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDQ4MTg5NiwiZXhwIjoxNjc0NjU0Njk2fQ.mhAfDbhUm0R_UTG-WLE08V9Nuho1z59AAU5AvsfPSgQ"
        chai. request(app)
             .post('/api/create')
             .set('auth_token',`${token}`)
@@ -83,7 +83,7 @@ describe("Get all posts", () => {
 it('it should delete a blog', (done) => {
 
     const id = '63ccb9ebed4900d8f34f21f7';
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDM5MjIyNCwiZXhwIjoxNjc0NTY1MDI0fQ.QNHmj_ipOe9_iLvjq6gK38LliFrE_gJKYisd-r4MZFU"
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDQ4MTg5NiwiZXhwIjoxNjc0NjU0Njk2fQ.mhAfDbhUm0R_UTG-WLE08V9Nuho1z59AAU5AvsfPSgQ"
 
 
       chai.request(app)
@@ -106,7 +106,7 @@ describe('Update Blog', () => {
         // const image = fs.readFileSync('/Users/andelarwanda/Desktop/My Projects/server/images/1674125400537pexels-harry-dona-2338407 (1).jpg.zip')
         const image = 'http://localhost:5000/images/1673610548664brand.PNG'
 
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDE5OTk3NSwiZXhwIjoxNjc0MjAzNTc1fQ.YGLml8i90bIcDUfMxF3hpKr9Q55YngG0t2vNsj8d3FI"
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDQ4MTg5NiwiZXhwIjoxNjc0NjU0Njk2fQ.mhAfDbhUm0R_UTG-WLE08V9Nuho1z59AAU5AvsfPSgQ"
 
       
 
