@@ -17,6 +17,7 @@ blogRoute.get("/getAllBlogs",blogController.getAllBlogs); //Get all blogs
 blogRoute.delete("/deleteBlog/:id",verifyAdmin ,blogController.deleteBlog); //Delete a blog
 
 
+// "test": " nyc  mocha --recursive --exit --timeout 500000  --require @babel/register src/test/**/*.js",
 
 
 

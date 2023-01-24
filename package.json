@@ -4,9 +4,10 @@
   "description": "server",
   "main": "index.js",
   "scripts": {
-    "test": " nyc  mocha --recursive --exit --timeout 500000  --require @babel/register src/test/**/*.js",
+     "test": " nyc  --reporter=text-summary mocha --recursive --exit --timeout 500000  --require @babel/register src/test/**/*.js",
     "dev": "nodemon --exec babel-node index.js",
-    "start": "node --experimental-specifier-resolution=node index.js"
+    "start": "node --experimental-specifier-resolution=node index.js",
+    "coverage": "nyc report --reporter=text-summary"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,7 @@
     "babel-plugin-istanbul": "^6.1.1",
     "chai": "^4.3.7",
     "chai-http": "^4.3.0",
+    "check-code-coverage": "^1.10.4",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.20",
     "nyc": "^15.1.0"
