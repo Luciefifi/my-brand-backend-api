@@ -71,6 +71,70 @@ const getSingleBlog ={
     },
   
   }
+  //create a blog swagger documentation 
+
+const createBlog = {
+    tags:["Blogs"],
+    description: "create a new blog",
+    requestBody:{
+        content:{
+            "Application/json":{
+                schema:{
+                    type:"object",
+                    properties:{
+                        title:{
+                            type:"string",
+                            description:"title of the blog",
+                            example:"singing"
+                        },
+                        description:{
+                            type:"string",
+                            description:"description of the blog",
+                            example:"singing is the best practice",
+                        },
+                        image:{
+                            type:"file",
+                            description:"image of the blog",
+                            example:"/Users/andelarwanda/Desktop/My Projects/server/src/images/1673612829382brand.PNG"
+                        },
+                        blogBody:{
+                            type:"string",
+                            description:"body of the blog",
+                            example:"singing is the best practice and the best",
+                        },
+                        
+                    },
+                },
+            },
+  
+        },
+    },
+  responses:{
+        200:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                        example:{
+                            
+                            _id: "63ccde6635bde581af696708",
+                            title: "dancing",
+                            description: "dancing is a very good physical exercise for the dancer",
+                            image: "http://localhost:5000/images/1674370662518pexels-harry-dona-2338407.jpg",
+                            blogBody: "dancing makes most of the dancer feel good\ndancing makes most of the dancer feel gooddancing makes most of the dancer feel good\ndancing makes most of the dancer feel gooddancing makes most of the dancer feel good",
+                            
+                          
+                    },
+  
+                    },
+                },
+            },
+        },
+    },
+  
+  
+  };
   
 
 
@@ -89,6 +153,9 @@ const blogRouteDoc ={
     },
     "/api/getSingleBlog/{id}":{
         get:getSingleBlog
+      },
+      "/api/create":{
+        post:createBlog
       }
    
 };
