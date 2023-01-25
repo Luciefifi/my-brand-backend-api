@@ -93,7 +93,7 @@ const createBlog = {
                             example:"singing is the best practice",
                         },
                         image:{
-                            type:"file",
+                            type:"string",
                             description:"image of the blog",
                             example:"/Users/andelarwanda/Desktop/My Projects/server/src/images/1673612829382brand.PNG"
                         },
@@ -135,9 +135,82 @@ const createBlog = {
   
   
   };
-  
 
-
+//update blog swagger documentation
+  const updateBlog = {
+    tags: ["Blogs"],
+    description: "Update a blog",
+    security: [{ bearerAuth: [] }],
+    parameters: [
+        {
+            name: "id",
+            in: "path",
+            description: "ID of the blog to update",
+            required: true,
+            type: "string"
+        }
+    ],
+    requestBody: {
+        content: {
+            "application/json": {
+                schema: {
+                    type: "object",
+                    properties: {
+                        title: {
+                            type: "string",
+                            description: "Title of the blog",
+                            example: "Singing"
+                        },
+                        description: {
+                            type: "string",
+                            description: "Description of the blog",
+                            example: "Singing is the best practice",
+                        },
+                        image: {
+                            type: "string",
+                            description: "Image of the blog (url)",
+                            example: "http://localhost:5000/images/1674370662518pexels-harry-dona-2338407.jpg"
+                        },
+                        blogBody: {
+                            type: "string",
+                            description: "Body of the blog",
+                        }
+                    }
+                }
+            }
+        },
+    },
+    responses: {
+        200: {
+            description: "OK",
+            content: {
+                "application/json": {
+                    schema: {
+                        type: "object",
+                        properties: {
+                            _id: {
+                                type: "string",
+                                description: "ID of the updated blog"
+                            },
+                            title: {
+                                type: "string",
+                                description: "Title of the updated blog"
+                            },
+                            description: {
+                                type: "string",
+                                description: "Description of the updated blog"
+                            },
+                            image: {
+                                type: "string",
+                                description: "Image of the updated blog (url)"
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
+};
 
 
 
@@ -156,6 +229,9 @@ const blogRouteDoc ={
       },
       "/api/create":{
         post:createBlog
+      },
+      "/api/updatePost/{id}":{
+        post:updateBlog
       }
    
 };
