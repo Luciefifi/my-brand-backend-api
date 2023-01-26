@@ -100,6 +100,32 @@ const registerUser = {
   
   };
 
+  //get all users swagger documetnation 
+  const listOfAllUsers = {
+    
+    tags:["Users"],
+    description: "list of all users",
+    security: [
+        {
+          auth_token: [],
+        },
+      ],
+    responses:{
+        200:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                      
+
+                    },
+                },
+            },
+        },
+    },
+};
+
 
   const userRouteDoc = {
     "/api/createUser": {
@@ -108,6 +134,10 @@ const registerUser = {
     "/api/login": {
         post:login
     },
+    "/api/getAllUsers": {
+        get:listOfAllUsers
+    },
+
 
   }
 
