@@ -269,7 +269,7 @@ const blogRouteDoc ={
         post:updateBlog
       },
       "/api/deleteBlog/{id}":{
-        dlete:deleteBlog
+        delete:deleteBlog
       }
    
 };

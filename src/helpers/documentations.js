@@ -1,4 +1,5 @@
 import blogRouteDoc from "../Routes/blog.doc"
+import messageRoutDoc from "../Routes/message.doc"
 
 const swaggerDocumentations ={
     
@@ -40,11 +41,16 @@ const swaggerDocumentations ={
                 name:"Blogs",
                 description:""
             },
+            {
+                name:"Messages",
+                description:""
+            }
             
 
         ],
         paths:{
-            ...blogRouteDoc
+            ...blogRouteDoc,
+            ...messageRoutDoc
 
         }
     }
