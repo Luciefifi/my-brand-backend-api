@@ -221,6 +221,32 @@ const createBlog = {
     },
 };
 
+//delete a blog swagger documentation 
+const deleteBlog = {
+    tags: ["Blogs"],
+    description: "Delete a blog",
+    security: [{ auth_token: [] }],
+    parameters: [
+        {
+            name: "id",
+            in: "path",
+            description: "ID of the blog to delete",
+            required: true,
+            type: "string"
+        }
+    ],
+    responses: {
+        204: {
+            description: "No Content"
+        },
+        401: {
+            description: "Unauthorized"
+        },
+        404: {
+            description: "Not Found"
+        }
+    }
+};
 
 
 
@@ -241,6 +267,9 @@ const blogRouteDoc ={
       },
       "/api/updatePost/{id}":{
         post:updateBlog
+      },
+      "/api/deleteBlog/{id}":{
+        delete:deleteBlog
       }
    
 };
