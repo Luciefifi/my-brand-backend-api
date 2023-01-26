@@ -31,11 +31,7 @@ const swaggerDocumentations ={
               }
             }
           },
-          security: [
-            {
-              bearerAuth: []
-            }
-          ],
+        
         
         tags:[
             {
