@@ -76,6 +76,11 @@ const getSingleBlog ={
 const createBlog = {
     tags:["Blogs"],
     description: "create a new blog",
+    security: [
+        {
+        auth_token: [],
+        },
+      ],
     requestBody:{
         content:{
             "Application/json":{
@@ -140,7 +145,11 @@ const createBlog = {
   const updateBlog = {
     tags: ["Blogs"],
     description: "Update a blog",
-    security: [{ bearerAuth: [] }],
+    security: [
+        {
+          auth_token: [],
+        },
+      ],
     parameters: [
         {
             name: "id",

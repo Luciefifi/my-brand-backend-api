@@ -18,6 +18,23 @@ const swaggerDocumentations ={
                 name:"development server"
             },
         ],
+
+
+        components: {
+            securitySchemes: {
+              bearerAuth: {
+                type: 'apiKey',
+                name: 'auth_token',
+                in: 'header'
+              }
+            }
+          },
+          security: [
+            {
+              bearerAuth: []
+            }
+          ],
+        
         tags:[
             {
                 name:"Blogs",
