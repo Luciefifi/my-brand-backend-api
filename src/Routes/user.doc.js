@@ -127,6 +127,47 @@ const registerUser = {
 };
 
 
+//get single userby id swagger documentation 
+const singleUser={
+    tags:["Users"],
+    summary:"get user by path id",
+    description:"get single user by id",
+    security: [
+        {
+          auth_token: [],
+        },
+      ],
+    parameters:[
+        {
+            name: "id",
+            in : "path",
+            description: "id of the user" ,
+            type: "string",
+            example: "hfbjsd2345njndfjhcbe3"
+        },
+    ],
+    responses:{
+        200:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+  
+  
+                    },
+                },
+            },
+        },
+        404:{
+            description:"user not found"
+        }
+    },
+  
+  }
+  
+
+
   const userRouteDoc = {
     "/api/createUser": {
         post:registerUser
@@ -137,6 +178,10 @@ const registerUser = {
     "/api/getAllUsers": {
         get:listOfAllUsers
     },
+    "/api/getSingleUser/{id}":{
+        get:singleUser
+      },
+
 
 
   }
