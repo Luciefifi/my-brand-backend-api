@@ -80,6 +80,46 @@ const createMessage = {
 };
 
 
+//get single message swagger documentation
+const getSingleMessage={
+    tags:["Messages"],
+    summary:"get message by path id",
+    description:"get single message by id",
+    security: [
+        {
+          auth_token: [],
+        },
+      ],
+    parameters:[
+        {
+            name: "id",
+            in : "path",
+            description: "id of the message" ,
+            type: "string",
+            example: "hfbjsd2345njndfjhcbe3"
+        },
+    ],
+    responses:{
+        200:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+
+  
+                    },
+                },
+            },
+        },
+        404:{
+            description:"message not found"
+        }
+    },
+  
+  }
+
+
 
   const messageRoutDoc = {
     "/api/createMessage": {
@@ -88,6 +128,9 @@ const createMessage = {
     "/api/getAllMessages": {
         get:listOfAllMessages
     },
+    "/api/getSingleMessage/{id}":{
+        get:getSingleMessage
+      },
 
 
   }
