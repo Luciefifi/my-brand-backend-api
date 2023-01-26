@@ -53,11 +53,42 @@ const createMessage = {
   
   };
 
+  //get all user messages swagger documentation 
+  const listOfAllMessages = {
+    
+    tags:["Messages"],
+    description: "list of all messages",
+    security: [
+        {
+          auth_token: [],
+        },
+      ],
+    responses:{
+        200:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                      
+
+                    },
+                },
+            },
+        },
+    },
+};
+
+
 
   const messageRoutDoc = {
     "/api/createMessage": {
         post:createMessage
     },
+    "/api/getAllMessages": {
+        get:listOfAllMessages
+    },
+
 
   }
 
