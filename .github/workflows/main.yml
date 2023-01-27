@@ -22,9 +22,12 @@ jobs:
         run: npm run test
       - name: Check test coverage
         run: npm run test:coverage
-      # - name: Deploy
-      #   run: |
-      #     # Deploy your code here
-      #     git push origin develop
+      - name: Deploy
+        run: |
+          git config --global user.email "niyomutonilucie@gmail.com"
+          git config --global user.name "Luciefifi"
+          git commit --amend --no-edit
+          git push -f origin develop
+
 
      
