@@ -10,7 +10,7 @@ describe('Contact Message', () => {
     it('should create a contact message', (done) => {
       chai.request(app)
         .post('/api/createMessage')
-        .send({fname: 'mesehandts', lname: 'yoeusahntds', email: 'mesahneytodsu@gmail.com', message: 'Hasdeslfnb, I wutldd lik nto inquire about your service.'})
+        .send({fname: 'mesfehandts', lname: 'yoeusafhntds', email: 'mesafhneytodsu@gmail.com', message: 'Hasdeslfnb, I wutfldd lik nto inquire about your service.'})
         .end((err, res) => {
             if (err) return done(err);
             console.log(res.body)
@@ -33,7 +33,8 @@ describe('Contact Message', () => {
 
 describe("Get all messages", () => {
     it("It Should get all messages", (done) => {
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDQ4MTg5NiwiZXhwIjoxNjc0NjU0Njk2fQ.mhAfDbhUm0R_UTG-WLE08V9Nuho1z59AAU5AvsfPSgQ"
+      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDgwMjcxNywiZXhwIjoxNjc0OTc1NTE3fQ.28W4erXi0XpmZ37-hDTPuDTfizxIFpqGKhAa7gufCTE"
+
 
       chai
         .request(app)
@@ -58,8 +59,9 @@ describe("Get all messages", () => {
 
    describe("get single message by id", () => {
     it("It should get a single message by id" , (done) => {
-        const id = "63cdff17fef1c8aeeaad9599"
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDQ4MTg5NiwiZXhwIjoxNjc0NjU0Njk2fQ.mhAfDbhUm0R_UTG-WLE08V9Nuho1z59AAU5AvsfPSgQ"
+        const id = "63ccd088410d44c9b9394b63"
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDgwMjcxNywiZXhwIjoxNjc0OTc1NTE3fQ.28W4erXi0XpmZ37-hDTPuDTfizxIFpqGKhAa7gufCTE"
+
 
         chai.request(app)
         .get(`/api/getSingleMessage/${id}`)

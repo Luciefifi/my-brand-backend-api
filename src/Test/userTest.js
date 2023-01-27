@@ -10,7 +10,7 @@ describe('User Registration', () => {
     it('should register a user', (done) => {
       chai.request(app)
         .post('/api/createUser')
-        .send({firstName: 'angeljineetas', lastName: 'callinheeteas', email: 'angelhlicatlinseea@gmail.com', password: '12345678',repeatPassword:'12345678'})
+        .send({firstName: 'angesljineetas', lastName: 'calslinheeteas', email: 'angselhlicatlinseea@gmail.com', password: '12345678',repeatPassword:'12345678'})
         .end((err, res) => {
             if (err) return done(err);
             console.log(res.body)
@@ -57,8 +57,9 @@ describe('Login', () => {
 //get single user 
 describe("get single user by id", () => {
     it("It should get a single user  by specified  id" , (done) => {
-        const id = "63ce167e407b9bf016281b8f"
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDQ4MTg5NiwiZXhwIjoxNjc0NjU0Njk2fQ.mhAfDbhUm0R_UTG-WLE08V9Nuho1z59AAU5AvsfPSgQ"
+        const id = "63c77535227711d17aed3415"
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDgwMjcxNywiZXhwIjoxNjc0OTc1NTE3fQ.28W4erXi0XpmZ37-hDTPuDTfizxIFpqGKhAa7gufCTE"
+
 
         chai.request(app)
         .get(`/api/getSingleUser/${id}`)
@@ -88,7 +89,8 @@ describe("get single user by id", () => {
 //get all users
 describe("Get all users", () => {
     it("It Should get all users", (done) => {
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDQ4MTg5NiwiZXhwIjoxNjc0NjU0Njk2fQ.mhAfDbhUm0R_UTG-WLE08V9Nuho1z59AAU5AvsfPSgQ"
+      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDgwMjcxNywiZXhwIjoxNjc0OTc1NTE3fQ.28W4erXi0XpmZ37-hDTPuDTfizxIFpqGKhAa7gufCTE"
+
 
       chai
         .request(app)
