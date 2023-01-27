@@ -25,9 +25,9 @@ jobs:
     #   GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
     #   PORT: ${{secrets.PORT}}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v1
       - name: 'Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}'
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install
