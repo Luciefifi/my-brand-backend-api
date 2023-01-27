@@ -17,9 +17,9 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build
-        run: npm run build
+        run: npm run start
       - name: Test
-        run: npm run test
+        run: npm test
       - name: Check test coverage
         run: npm run test:coverage
       - name: Deploy
