@@ -1,7 +1,4 @@
 # repository name
-[![Build Status](https://github.com/Luciefifi/my-brand-backend-api.git.svg?branch=develop)](https://github.com/Luciefifi/my-brand-backend-api.git) [![Maintainability](https://github.com/Luciefifi/my-brand-backend-api.git/v3/badges/c13ccd01d6a7f3079c9f/maintainability)](https://github.com/Luciefifi/my-brand-backend-api.git/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/c13ccd01d6a7f3079c9f/test_coverage)](https://github.com/Luciefifi/my-brand-backend-api.git/develop
-)
-
 
 my-brand-backend-api
 
