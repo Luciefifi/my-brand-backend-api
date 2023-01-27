@@ -18,7 +18,7 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      # - name: Test
+      - name: Test
         run: npm run test
       # - name: Code coverage
       #   run: npx codecov --token=YOUR_TOKEN
