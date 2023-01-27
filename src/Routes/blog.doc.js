@@ -266,7 +266,7 @@ const blogRouteDoc ={
         post:createBlog
       },
       "/api/updatePost/{id}":{
-        post:updateBlog
+        put:updateBlog
       },
       "/api/deleteBlog/{id}":{
         delete:deleteBlog
