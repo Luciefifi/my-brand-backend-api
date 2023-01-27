@@ -176,7 +176,7 @@ const createBlog = {
                             example: "Singing is the best practice",
                         },
                         image: {
-                            type: "string",
+                            type: "file",
                             description: "Image of the blog (url)",
                             example: "http://localhost:5000/images/1674370662518pexels-harry-dona-2338407.jpg"
                         },
