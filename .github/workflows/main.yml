@@ -1,33 +1,29 @@
-name: develop
+name: CI/CD
+
 on:
   push:
     branches: [ develop ]
   pull_request:
     branches: [ develop ]
-  workflow_dispatch:
+
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 18.13.0 ]
+
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
-        with: 
-          node-version: "18.13.0"
-      - name: Install dependencies
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Test
-        run: npm test
-      - name: Check test coverage
-        run: npm run test:coverage
-      - name: Deploy
-        run: |
-          git config --global user.email "niyomutonilucie@gmail.com"
-          git config --global user.name "Luciefifi"
-          git commit --amend --no-edit
-          git push -f origin develop
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
 
 
      
