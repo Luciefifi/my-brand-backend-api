@@ -1,7 +1,10 @@
-# repository name
 
-my-brand-backend-api
+
+
 <img alt="Codecov" src="https://img.shields.io/codecov/c/gh/Luciefifi/my-brand-backend-api?color=green&style=for-the-badge">
+
+# repository name
+my-brand-backend-api
 
 # description 
 this is the server of my brand , my brand will help the people to  know alot about about me such as my skills , experiences , my blog and they can contact me easily .   user can send contact message and the admin can also retrieve that message that was sent by user . an admin can also create , update , delete and retrieve the blog post . user can also view the blog post as well
