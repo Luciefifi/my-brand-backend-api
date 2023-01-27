@@ -19,6 +19,10 @@ const swaggerDocumentations ={
                 url: "http://localhost:5000",
                 name:"development server"
             },
+            {
+                url: 'https://my-brand-backend-api.onrender.com',
+                description: 'Production server',
+              },
         ],
 
 
