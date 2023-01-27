@@ -24,13 +24,16 @@ const swaggerDocumentations ={
 
         components: {
             securitySchemes: {
-              bearerAuth: {
+              auth_token: {
                 type: 'apiKey',
-                name: 'auth_token',
-                in: 'header'
-              }
-            }
+                scheme: 'bearer',
+                bearerFormat: 'JWT',
+                name:"auth_token",
+                in:"header"
+              },
+            },
           },
+          
         
         
         tags:[
