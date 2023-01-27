@@ -20,7 +20,11 @@ jobs:
         run: npm run build
       - name: Test
         run: npm run test
-      # - name: Code coverage
-      #   run: npx codecov --token=YOUR_TOKEN
+      - name: Check test coverage
+        run: npm run test:coverage
+      # - name: Deploy
+      #   run: |
+      #     # Deploy your code here
+      #     git push origin develop
 
      
