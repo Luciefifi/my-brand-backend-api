@@ -98,7 +98,7 @@ const createBlog = {
                             example:"singing is the best practice",
                         },
                         image:{
-                            type:"file",
+                            type:"string",
                             description:"image of the blog",
                             example:"/Users/andelarwanda/Desktop/My Projects/server/src/images/1673612829382brand.PNG"
                         },
@@ -176,7 +176,7 @@ const createBlog = {
                             example: "Singing is the best practice",
                         },
                         image: {
-                            type: "file",
+                            type: "string",
                             description: "Image of the blog (url)",
                             example: "http://localhost:5000/images/1674370662518pexels-harry-dona-2338407.jpg"
                         },
