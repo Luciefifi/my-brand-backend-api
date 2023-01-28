@@ -10,7 +10,7 @@ describe('Contact Message', () => {
     it('should create a contact message', (done) => {
       chai.request(app)
         .post('/api/createMessage')
-        .send({fname: 'mesfehandts', lname: 'yoeusafhntds', email: 'mesafhneytodsu@gmail.com', message: 'Hasdeslfnb, I wutfldd lik nto inquire about your service.'})
+        .send({fname: 'mesferhandts', lname: 'yoeursafhntds', email: 'mesarfhneytodsu@gmail.com', message: 'Hasdeslfrnb, I wutfldd lik nto inquire about your service.'})
         .end((err, res) => {
             if (err) return done(err);
             console.log(res.body)

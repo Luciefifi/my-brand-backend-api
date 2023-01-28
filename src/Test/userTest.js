@@ -10,7 +10,7 @@ describe('User Registration', () => {
     it('should register a user', (done) => {
       chai.request(app)
         .post('/api/createUser')
-        .send({firstName: 'angesljineetas', lastName: 'calslinheeteas', email: 'angselhlicatlinseea@gmail.com', password: '12345678',repeatPassword:'12345678'})
+        .send({firstName: 'angesldjineetas', lastName: 'calsldinheeteas', email: 'angsdelhlicatlinseea@gmail.com', password: '12345678',repeatPassword:'12345678'})
         .end((err, res) => {
             if (err) return done(err);
             console.log(res.body)
@@ -66,7 +66,7 @@ describe("get single user by id", () => {
        .set('auth_token',`${token}`)
         .end((err,res)=>{
             if (err) return done(err);
-            console.log(res.body)
+            // console.log(res.body)
             expect(res.status).to.equal(200);
             expect(res.body).to.have.property('status').eql('success');
             expect(res.body).to.have.property('data');
@@ -97,7 +97,7 @@ describe("Get all users", () => {
        .get("/api/getAllusers")
        .set('auth_token',`${token}`)
         .end((err, res) => {
-            console.log(res.body)
+            // console.log(res.body)
           res.should.have.status(200);
           res.body.should.have.property('status')
           res.body.should.have.property('allUsers')

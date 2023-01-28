@@ -73,153 +73,115 @@ const getSingleBlog ={
   }
   //create a blog swagger documentation 
 
-const createBlog = {
-    tags:["Blogs"],
-    description: "create a new blog",
-    security: [
-        {
-        auth_token: [],
-        },
-      ],
-    requestBody:{
-        content:{
-            "Application/json":{
-                schema:{
-                    type:"object",
-                    properties:{
-                        title:{
-                            type:"string",
-                            description:"title of the blog",
-                            example:"singing"
-                        },
-                        description:{
-                            type:"string",
-                            description:"description of the blog",
-                            example:"singing is the best practice",
-                        },
-                        image:{
-                            type:"string",
-                            description:"image of the blog",
-                            example:"/Users/andelarwanda/Desktop/My Projects/server/src/images/1673612829382brand.PNG"
-                        },
-                        blogBody:{
-                            type:"string",
-                            description:"body of the blog",
-                            example:"singing is the best practice and the best",
-                        },
-                        
-                    },
-                },
-            },
-  
-        },
-    },
-  responses:{
-        200:{
-            description:"OK",
-            content:{
-                "application/json":{
-                    schema:{
-                        type:"object",
-                        example:{
-                            
-                            _id: "63ccde6635bde581af696708",
-                            title: "dancing",
-                            description: "dancing is a very good physical exercise for the dancer",
-                            image: "http://localhost:5000/images/1674370662518pexels-harry-dona-2338407.jpg",
-                            blogBody: "dancing makes most of the dancer feel good\ndancing makes most of the dancer feel gooddancing makes most of the dancer feel good\ndancing makes most of the dancer feel gooddancing makes most of the dancer feel good",
-                            
-                          
-                    },
-  
-                    },
-                },
-            },
-        },
-    },
-  
-  
-  };
 
-//update blog swagger documentation
-  const updateBlog = {
-    tags: ["Blogs"],
-    description: "Update a blog",
+  const createBlog = {
+    tags:['Blogs'],
+    description:"Create a Blog ",
     security: [
         {
           auth_token: [],
         },
       ],
-    parameters: [
-        {
-            name: "id",
-            in: "path",
-            description: "ID of the blog to update",
-            required: true,
-            type: "string"
-        }
-    ],
-    requestBody: {
-        content: {
-            "application/json": {
-                schema: {
-                    type: "object",
-                    properties: {
-                        title: {
-                            type: "string",
-                            description: "Title of the blog",
-                            example: "Singing"
+    requestBody:{
+        content:{
+            "multipart/form-data":{
+                schema:{
+                    type:"object",
+                    properties:{
+                        title:{
+                            type:"string",
                         },
-                        description: {
-                            type: "string",
-                            description: "Description of the blog",
-                            example: "Singing is the best practice",
+                        image:{
+                            type:"file",
+                            description:"the image of the blog post"
                         },
-                        image: {
-                            type: "string",
-                            description: "Image of the blog (url)",
-                            example: "http://localhost:5000/images/1674370662518pexels-harry-dona-2338407.jpg"
+                        description:{
+                            type:"string",
                         },
-                        blogBody: {
-                            type: "string",
-                            description: "Body of the blog",
+                        blogBody:{
+                            type:"string",
+                            description:"the body of the blog post"
                         }
+                       
                     }
                 }
             }
-        },
+        }
     },
-    responses: {
-        200: {
-            description: "OK",
-            content: {
-                "application/json": {
-                    schema: {
-                        type: "object",
-                        properties: {
-                            _id: {
-                                type: "string",
-                                description: "ID of the updated blog"
-                            },
-                            title: {
-                                type: "string",
-                                description: "Title of the updated blog"
-                            },
-                            description: {
-                                type: "string",
-                                description: "Description of the updated blog"
-                            },
-                            image: {
-                                type: "string",
-                                description: "Image of the updated blog (url)"
-                            },
+    responses:{
+        201:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    type:"object",
+                    example:{
+                        status:"success",
+                        data:[]
+                    }
+                }
+            }
+        }
+    }
+}
+
+//update blog swagger documentation
+const updateBlog= {
+    tags:['Blogs'],
+    description:"Update a Blog ",
+    security: [
+        {
+          auth_token: [],
+        },
+      ],
+    parameters:[
+        {
+            name:"id",
+            in:"path",
+            description:"id of the blog",
+            type:"string"
+        }
+    ],
+    requestBody:{
+        content:{
+            "multipart/form-data":{
+                schema:{
+                    type:"object",
+                    properties:{
+                        title:{
+                            type:"string",
                         },
-                    },
-                },
-            },
-        },
+                        image:{
+                            type:"file",
+                            description:"the image of the blog post"
+                        },
+                        description:{
+                            type:"string",
+                        },
+                        blogBody:{
+                            type:"string",
+                            description:"the image of the blog post"
+                        }
+                       
+                    }
+                }
+            }
+        }
     },
-};
+    responses:{
+        201:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    type:"object",
+                    example:{
+                        status:"success",
+                        data:[]
+                    }
+                }
+            }
+        }
+    }
+}
 
 //delete a blog swagger documentation 
 const deleteBlog = {

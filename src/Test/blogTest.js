@@ -82,7 +82,7 @@ describe("Get all posts", () => {
 
 it('it should delete a blog', (done) => {
 
-    const id = '63ccde6635bde581af696708';
+    const id = '63cf6ba911be64832fa6b83c';
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDgwMjcxNywiZXhwIjoxNjc0OTc1NTE3fQ.28W4erXi0XpmZ37-hDTPuDTfizxIFpqGKhAa7gufCTE"
 
 
@@ -129,10 +129,10 @@ describe('Update Blog', () => {
                 if (err) {
                     console.log(err);
                   }
-                // res.should.have.status(200)
-                // res.body.should.have.property('status').eql('success');
-                // res.body.should.have.property('title', updatedData.title);
-                // res.body.should.have.property('content', updatedData.content);
+                res.should.have.status(200)
+                res.body.should.have.property('status').eql('success');
+                res.body.should.have.property('title', updatedData.title);
+                res.body.should.have.property('content', updatedData.content);
                 done();
             });
     });
