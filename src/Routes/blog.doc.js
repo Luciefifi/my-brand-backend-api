@@ -76,7 +76,7 @@ const getSingleBlog ={
 
   const createBlog = {
     tags:['Blogs'],
-    description:"Create a Blog ",
+    description:"Create a Blog post",
     security: [
         {
           auth_token: [],
@@ -91,17 +91,18 @@ const getSingleBlog ={
                         title:{
                             type:"string",
                         },
+
                         image:{
                             type:"file",
                             description:"the image of the blog post"
                         },
+                        
                         description:{
                             type:"string",
                         },
                         blogBody:{
                             type:"string",
-                            description:"the body of the blog post"
-                        }
+                        },
                        
                     }
                 }
