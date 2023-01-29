@@ -160,7 +160,7 @@ const updateBlog= {
                         },
                         blogBody:{
                             type:"string",
-                            description:"the image of the blog post"
+                            description:"the body of the blog post"
                         }
                        
                     }
