@@ -59,7 +59,7 @@ class UserController{
             }
             //create token
             const token = jwt.sign({ id:user._id }, process.env.JWT_SECRET, {
-                expiresIn: "48h",
+                expiresIn: "100d",
             });
             res.header("auth_token", token)
 
