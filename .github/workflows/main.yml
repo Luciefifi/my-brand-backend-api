@@ -1,40 +1,5 @@
 
 
-# # name: CI/CD
-
-# # on:
-# #   push:
-# #     branches: [ develop ]
-# #   workflow_dispatch:
-# # jobs:
-# #   build:
-# #     runs-on: ubuntu-latest
-
-# #     steps:
-# #       - uses: actions/checkout@v3
-# #       - name: Use Node.js
-# #         uses: actions/setup-node@v3
-# #         with: 
-# #           node-version: "18.13.0"
-
-# env: 
-    
-#       MONGODB_URL: ${{secrets.MONGODB_URL}}
-#       CLOUDINARY_CLOUD_NAME: ${{secrets.CLOUDINARY_CLOUD_NAME}}
-#      CLOUDINARY_API_KEY: ${{secrets.CLOUDINARY_API_KEY}}
-#       CLOUDINARY_API_SECRET: ${{secrets.CLOUDINARY_API_SECRET}}
-#       JWT_SECRET: ${{secrets.JWT_SECRET}}
-     
-#       PORT: ${{secrets.PORT}}
-# #       - name: Install dependencies
-# #         run: npm install
-
-# #       - name: Run test
-# #         run: npm test
-
-#        - run: npm run coverage
-
-
 
 
 name: CI/CD
@@ -66,10 +31,10 @@ jobs:
           node-version: 18.x
       - name: Install dependencies
         run: npm install
-      # - name: Run tests
-      #   run: npm test
-      # - name: Generate coverage report
-      #   run: npm run coverage
+      - name: Run tests
+        run: npm test
+      - name: Generate coverage report
+        run: npm run coverage
 
 
 
