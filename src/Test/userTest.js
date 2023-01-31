@@ -10,7 +10,7 @@ describe('User Registration', () => {
     it('should register a user', (done) => {
       chai.request(app)
         .post('/api/createUser')
-        .send({firstName: 'angeldjineetead', lastName: 'casldineheetead', email: 'angdelehlicatlinsead@gmail.com', password: '12345678',repeatPassword:'12345678'})
+        .send({firstName: 'angelzzdjineetead', lastName: 'casldinehzzeetead', email: 'angdelezzhlicatlinsead@gmail.com', password: '12345678',repeatPassword:'12345678'})
         .end((err, res) => {
             if (err) return done(err);
 
