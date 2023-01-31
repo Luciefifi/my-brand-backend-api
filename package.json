@@ -4,10 +4,10 @@
   "description": "server",
   "main": "index.js",
   "scripts": {
-    "test": " nyc  --reporter=text-summary mocha --recursive --exit --timeout 500000  --require @babel/register src/test/**/*.js",
+    "test": "nyc --reporter=text --reporter=html --reporter=json-summary mocha --recursive --exit --timeout 500000  --require @babel/register src/test/**/*.js",
     "dev": "nodemon --exec babel-node index.js",
     "start": "babel-node index.js",
-    "coverage": "nyc report --reporter=text-summary"
+    "coverage": "nyc --lines=70 --check-coverage nyc --reporter=html --report-dir=coverage/ npm run test"
   },
   "repository": {
     "type": "git",
