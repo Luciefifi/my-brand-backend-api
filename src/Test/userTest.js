@@ -31,26 +31,44 @@ describe('User Registration', () => {
 
 
 //login
-
 describe('Login', () => {
-    it('should be able to login', (done) => {
-      chai.request(app)
-        .post('/api/login')
-        .send({ email: 'angellicaline@gmail.com', password: '12345678'})
-        .end((err, res) => {
-            if (err) return done(err);
+  it('should return an error for invalid credentials', (done) => {
+    chai.request(app)
+      .post('/api/login')
+      .send({ email: 'invalid@email.com', password: 'incorrectpassword'})
+      .end((err, res) => {
+          if (err) return done(err);
 
-            expect(res.status).to.equal(200);
-           
-            res.body.should.have.property('status').eql('success');
-            res.body.should.have.property('successMessage');
-            res.body.should.have.property('token');
-            
-        
-            done();
-        });
-    });
+          expect(res.status).to.equal(401);
+          
+          res.body.should.have.property('status');
+          res.body.should.have.property('message').eql('Invalid credentials');
+          
+      
+          done();
+      });
+  });
+
+  it('should be able to login with valid credentials', (done) => {
+    chai.request(app)
+      .post('/api/login')
+      .send({ email: 'angellicaline@gmail.com', password: '12345678'})
+      .end((err, res) => {
+          if (err) return done(err);
+
+          expect(res.status).to.equal(200);
+         
+          res.body.should.have.property('status').eql('success');
+          res.body.should.have.property('successMessage');
+          res.body.should.have.property('token');
+          
+      
+          done();
+      });
+  });
 });
+
+
 
 //get single user 
 describe("get single user by id", () => {
