@@ -1,6 +1,6 @@
 
 
-![check-code-coverage](https://img.shields.io/badge/code--coverage-60.33%25-yellow)
+![check-code-coverage](https://img.shields.io/badge/code--coverage-81.44%25-green)
 <!-- <img alt="Codecov" src="https://img.shields.io/codecov/c/gh/Luciefifi/my-brand-backend-api?color=green&style=for-the-badge"> -->
 
 # repository name
