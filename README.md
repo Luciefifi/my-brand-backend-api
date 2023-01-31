@@ -1,5 +1,5 @@
 
-
+<img alt="Cirrus CI - Base Branch Build Status" src="https://img.shields.io/cirrus/github/Luciefifi/my-brand-backend-api?color=green">
 ![check-code-coverage](https://img.shields.io/badge/code--coverage-81.44%25-green)
 <!-- <img alt="Codecov" src="https://img.shields.io/codecov/c/gh/Luciefifi/my-brand-backend-api?color=green&style=for-the-badge"> -->
 
