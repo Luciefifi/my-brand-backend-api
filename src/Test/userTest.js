@@ -10,10 +10,9 @@ describe('User Registration', () => {
     it('should register a user', (done) => {
       chai.request(app)
         .post('/api/createUser')
-        .send({firstName: 'angesljineetas', lastName: 'calslinheeteas', email: 'angselhlicatlinseea@gmail.com', password: '12345678',repeatPassword:'12345678'})
+        .send({firstName: 'angelzzdjineetead', lastName: 'casldinehzzeetead', email: 'angdelezzhlicatlinsead@gmail.com', password: '12345678',repeatPassword:'12345678'})
         .end((err, res) => {
             if (err) return done(err);
-            console.log(res.body)
 
             expect(res.status).to.equal(201);
            
@@ -40,7 +39,6 @@ describe('Login', () => {
         .send({ email: 'angellicaline@gmail.com', password: '12345678'})
         .end((err, res) => {
             if (err) return done(err);
-            console.log(res.body)
 
             expect(res.status).to.equal(200);
            
@@ -58,7 +56,8 @@ describe('Login', () => {
 describe("get single user by id", () => {
     it("It should get a single user  by specified  id" , (done) => {
         const id = "63c77535227711d17aed3415"
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDgwMjcxNywiZXhwIjoxNjc0OTc1NTE3fQ.28W4erXi0XpmZ37-hDTPuDTfizxIFpqGKhAa7gufCTE"
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NTA1NzU5MCwiZXhwIjoxNjc1MjMwMzkwfQ.VII3UucDGlL5gBYpf-jK-A8ooGs-3KmQW80jpcM2J2E";
+
 
 
         chai.request(app)
@@ -66,7 +65,6 @@ describe("get single user by id", () => {
        .set('auth_token',`${token}`)
         .end((err,res)=>{
             if (err) return done(err);
-            console.log(res.body)
             expect(res.status).to.equal(200);
             expect(res.body).to.have.property('status').eql('success');
             expect(res.body).to.have.property('data');
@@ -89,7 +87,8 @@ describe("get single user by id", () => {
 //get all users
 describe("Get all users", () => {
     it("It Should get all users", (done) => {
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NDgwMjcxNywiZXhwIjoxNjc0OTc1NTE3fQ.28W4erXi0XpmZ37-hDTPuDTfizxIFpqGKhAa7gufCTE"
+      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzc3NTM1MjI3NzExZDE3YWVkMzQxNSIsImlhdCI6MTY3NTA1NzU5MCwiZXhwIjoxNjc1MjMwMzkwfQ.VII3UucDGlL5gBYpf-jK-A8ooGs-3KmQW80jpcM2J2E";
+
 
 
       chai
@@ -97,10 +96,18 @@ describe("Get all users", () => {
        .get("/api/getAllusers")
        .set('auth_token',`${token}`)
         .end((err, res) => {
-            console.log(res.body)
-          res.should.have.status(200);
-          res.body.should.have.property('status')
-          res.body.should.have.property('allUsers')
+          if (err) return done(err);
+            expect(res.status).to.equal(200);
+            expect(res.body).to.have.property('status').eql('success');
+            expect(res.body).to.have.property('allUsers');
+           expect(res.body.allUsers[0]).to.have.property('firstName')
+            expect(res.body.allUsers[0]).to.have.property('lastName');
+             expect(res.body.allUsers[0]).to.have.property('email');
+          expect(res.body.allUsers[0]).to.have.property('password');
+          expect(res.body.allUsers[0]).to.have.property('repeatPassword');
+          expect(res.body.allUsers[0]).to.have.property('role');
+          expect(res.body.allUsers[0]).to.have.property('isVerified');
+          expect(res.body.allUsers[0]).to.have.property('dateCreated');
 
           
           done();

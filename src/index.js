@@ -2,6 +2,7 @@ import express from "express";
 import dbConn from "./database/dBase";
 import cors from "cors";
 import dotenv from "dotenv";
+import swaggerJSDoc from "swagger-jsdoc";
 import swaggerDocumentations from "./helpers/documentations";
 import swaggerDoc from "swagger-ui-express";
 import messageRoute from "./Routes/messageRoute";
