@@ -4,11 +4,12 @@ import blogController from "../Controllers/blogController";
 import upload from "../helpers/multer";
 import verifyAdmin from "../middleware/verifyAdmin";
 import { validateBlog } from "../validations/blogValidation";
+import authLogin from "../middleware/authentication"
 
 
 const blogRoute = express.Router();
 
-blogRoute.post("/create",upload.single("image"),verifyAdmin, blogController.createBlog); // create new blog
+blogRoute.post("/create", authLogin, verifyAdmin, blogController.createBlog); // create new blog
 
 blogRoute.put("/updatePost/:id",upload.single("image"),verifyAdmin,blogController.updateBlog); //update existing blog
 
