@@ -11,9 +11,9 @@ const blogRoute = express.Router();
 
 blogRoute.post("/create", authLogin, verifyAdmin, blogController.createBlog); // create new blog
 
-blogRoute.put("/updatePost/:id",upload.single("image"),verifyAdmin,blogController.updateBlog); //update existing blog
+blogRoute.put("/updatePost/:blogId", authLogin, verifyAdmin, blogController.updateBlog); //update existing blog
 
-blogRoute.get("/getSingleBlog/:id",blogController.getSingleBlog); //get single blog
+blogRoute.get("/getSingleBlog/:blogId",blogController.getSingleBlog); //get single blog
 
 blogRoute.get("/getAllBlogs",blogController.getAllBlogs); //Get all blogs
 

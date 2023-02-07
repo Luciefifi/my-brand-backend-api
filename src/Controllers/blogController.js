@@ -55,7 +55,7 @@ class blogController{
             })
             // const imageUrl = `http://localhost:5000/images/${req.file.filename}`
   
-            const updatedBlog = await Blog.findByIdAndUpdate(req.params.id,{$set:{
+            const updatedBlog = await Blog.findByIdAndUpdate(req.params.blogId,{$set:{
               title: req.body.title,
               description:req.body.description,
               image: postImageResult.secure_url,
@@ -71,6 +71,7 @@ class blogController{
             }
             res.status(200).json({
               status:"success",
+              "successMessage": "Post updated successfully!",
               data:updatedBlog
             });
           } catch (error) {
@@ -86,7 +87,7 @@ class blogController{
         static async getSingleBlog(req, res) {
         try {
 
-          const singleBlog = await Blog.findById(req.params.id) 
+          const singleBlog = await Blog.findById(req.params.blogId).populate("createdBy") 
 
           if(!singleBlog)
           {
@@ -112,7 +113,7 @@ class blogController{
       static async getAllBlogs(req, res) {
         try {
 
-          const allBlogs = await Blog.find()
+          const allBlogs = await Blog.find().populate("createdBy").sort({createdAt: -1})
          res.status(200).json({
             status:"success",
             data: allBlogs
@@ -140,7 +141,7 @@ class blogController{
           await blog.remove()
           res.status(200).json({
             status:"success",
-            message:"Blog deleted successfully",
+            "successMessage":"Blog deleted successfully",
           });
           
         } catch (error) {
