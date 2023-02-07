@@ -1,6 +1,6 @@
 import Blog from "../Models/blogModel";
 import blogValidationSchema from "../validations/blogValidation";
-
+import cloudinary from "../helpers/cloudinary";
 
 class blogController{
     static async createBlog(req,res){
@@ -14,34 +14,26 @@ class blogController{
                 status:"fail",
                 "validationError": error.details[0].message})
 
-            
-            const imageUrl = `http://localhost:5000/images/${req.file.filename}`
+            const postImageResult = await cloudinary.uploader.upload(req.body.image, {
+                folder: "My_Brand-Images"
+            })
 
             const blog = new Blog({
                 title:req.body.title,
                 description:req.body.description,
-                image: imageUrl,
-                blogBody:req.body.blogBody
+                image: postImageResult.secure_url,
+                blogBody:req.body.blogBody,
+                createdBy : req.user._id,
             });
             await blog.save();
+            const populatedPost = await blog.populate('createdBy')
 
-            (req, res) => {
-    const { error, value } = validateBlog(req.body);
-  
-    if (!error) {
-      console.log(error);
-      return res.status(400).json({
-        status:"fail",
-        "message": error.details})
-      
-    }
-  
-    res.send("blogs are validated");
-  },
-
-            res.status(201).json({"status":"success", "data": blog});
+            res.status(201).json({"status":"success",
+            "successMessage": "Post created successfully!",
+            "data": populatedPost});
 
         } catch (error) {
+          console.log(error)
             res.status(500).json({
               staus : "fail",
               "error": error.message});
@@ -51,12 +43,22 @@ class blogController{
     static async updateBlog(req, res) {
           try {
   
-            const imageUrl = `http://localhost:5000/images/${req.file.filename}`
+            const {error} = blogValidationSchema.validate(req.body);
+
+          if (error)
+              return res.status(400).json({
+                status:"fail",
+                "validationError": error.details[0].message})
+
+            const postImageResult = await cloudinary.uploader.upload(req.body.image, {
+                folder: "My_Brand-Images"
+            })
+            // const imageUrl = `http://localhost:5000/images/${req.file.filename}`
   
-            const updatedBlog = await Blog.findByIdAndUpdate(req.params.id,{$set:{
+            const updatedBlog = await Blog.findByIdAndUpdate(req.params.blogId,{$set:{
               title: req.body.title,
               description:req.body.description,
-              image: imageUrl,
+              image: postImageResult.secure_url,
               blogBody:req.body.blogBody
             }},{new:true});
 
@@ -69,6 +71,7 @@ class blogController{
             }
             res.status(200).json({
               status:"success",
+              "successMessage": "Post updated successfully!",
               data:updatedBlog
             });
           } catch (error) {
@@ -84,7 +87,7 @@ class blogController{
         static async getSingleBlog(req, res) {
         try {
 
-          const singleBlog = await Blog.findById(req.params.id) 
+          const singleBlog = await Blog.findById(req.params.blogId).populate("createdBy") 
 
           if(!singleBlog)
           {
@@ -110,7 +113,7 @@ class blogController{
       static async getAllBlogs(req, res) {
         try {
 
-          const allBlogs = await Blog.find()
+          const allBlogs = await Blog.find().populate("createdBy").sort({createdAt: -1})
          res.status(200).json({
             status:"success",
             data: allBlogs
@@ -138,7 +141,7 @@ class blogController{
           await blog.remove()
           res.status(200).json({
             status:"success",
-            message:"Blog deleted successfully",
+            "successMessage":"Blog deleted successfully",
           });
           
         } catch (error) {

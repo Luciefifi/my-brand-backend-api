@@ -2,7 +2,7 @@ import express from "express";
 import dbConn from "./database/dBase";
 import cors from "cors";
 import dotenv from "dotenv";
-import swaggerJSDoc from "swagger-jsdoc";
+import bodyParser from "body-parser";
 import swaggerDocumentations from "./helpers/documentations";
 import swaggerDoc from "swagger-ui-express";
 import messageRoute from "./Routes/messageRoute";
@@ -14,7 +14,10 @@ import userRoute from "./Routes/userRoute";
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json({limit: "100mb"}));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.json({limit: "100mb", extended: true}))
+app.use(express.urlencoded({limit: "100mb", extended: true, parameterLimit: 50000}))
 dotenv.config();
 
 const port=process.env.PORT || 5000;

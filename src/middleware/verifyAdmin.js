@@ -14,10 +14,9 @@ const verifyAdmin = async(req, res, next) => {
     }
     try {
       const decodedToken = jwt.verify(verifyToken, process.env.JWT_SECRET);
-      req.user = decodedToken.id;
+      req.user = decodedToken.data;
 
-      const loggeInUser = await User.findOne({_id: req.user})
-      const userRole = loggeInUser.role
+      const userRole = req.user.role
 
       if(userRole !== "admin"){
         return res.status(401).json({

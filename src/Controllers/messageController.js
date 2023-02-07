@@ -1,8 +1,19 @@
 import Message from "../Models/messageModel";
+import messageValidationSchema from "../validations/messageValidation";
 
 class messageController {
 //create a contact message
     static async createMessage(req, res) {
+
+      //validations
+
+      const {error} = messageValidationSchema.validate(req.body);
+
+      if (error)
+          return res.status(400).json({
+            status:"fail",
+            "validationError": error.details[0].message})
+
         try {
           const message = new Message({
             fname: req.body.fname,

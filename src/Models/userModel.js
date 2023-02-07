@@ -5,8 +5,7 @@ const userSchema = mongoose.Schema({
    
     firstName:{
         type:String,
-        required:true,
-        unique:true
+        required:true
     },
     lastName: {
         type:String,
@@ -22,7 +21,7 @@ const userSchema = mongoose.Schema({
     },
     repeatPassword:{
         type:String,
-        required:true
+        required: true
     },
 
     role:{
@@ -35,11 +34,8 @@ const userSchema = mongoose.Schema({
         default: "false"
     },
 
-    dateCreated: {
-        type: 'date',
-        default: Date.now()
-  
-    }
+},{
+    timestamps: true
 })
 
 const User  = mongoose.model('User', userSchema)

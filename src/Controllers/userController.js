@@ -1,6 +1,7 @@
 import User from "../Models/userModel";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import userValidationSchema from "../validations/registerValidation";
 
 
 
@@ -8,7 +9,17 @@ class UserController{
     //create / register user
     static async createUser(req,res){
 
-        try{
+
+        const {error} = userValidationSchema.validate(req.body)
+        if (error)
+            return res.status(400).json({"validationError": error.details[0].message})
+
+        const duplicatedEmail = await User.findOne({email: req.body.email})
+
+        if (duplicatedEmail)
+            return res.status(409).json({"message": `A user with email ${req.body.email} already exist!`})
+
+        try{      
 
             const salt = await bcrypt.genSalt()
 
@@ -26,14 +37,14 @@ class UserController{
             });
             await user.save();
             res.status(201).json({
-                status: "success", 
+                "successMessage": "User registered successfully!", 
                 registeredUser: user});
-                console.log("User registered successfully!");
             
         } catch(err){
-            res.status(500).json(
-               { status:"fail",
-                error: err.message});
+            res.status(500).json({ 
+                status:"fail",
+                error: err.message
+            });
         }
 
     }
@@ -58,7 +69,7 @@ class UserController{
                     "InvalidCredentials":"Invalid email or password"});
             }
             //create token
-            const token = jwt.sign({ id:user._id }, process.env.JWT_SECRET, {
+            const token = jwt.sign({ data: user }, process.env.JWT_SECRET, {
                 expiresIn: "100d",
             });
             res.header("auth_token", token)
@@ -70,10 +81,34 @@ class UserController{
                                            
             
         } catch(err){
-            res.status(500).json(err.message);
+            res.status(500).json({ 
+                status:"fail",
+                error: err.message
+            });
 
         }
 
+    }
+
+
+    static async loggedInUser(req, res) {
+        try{
+    
+            const loggedInUser = await User.findOne({ _id : req.user._id })
+     
+            res.status(200).json({
+                "successMessage": "LoggedIn User Fetched Successfully!",
+                "loggedInUser": loggedInUser, 
+            })
+        }
+    
+        catch(error){
+            console.log(error)
+            res.status(500).json({
+                "status": "fail",
+                "errorMessage": error.message
+            })
+        }
     }
 
 
