@@ -6,6 +6,6 @@ const messageRoute =express.Router();
 
 messageRoute.post("/createMessage",messageController.createMessage);
 messageRoute.get("/getSingleMessage/:id", verifyAdmin,messageController.getSingleMessage);
-messageRoute.get("/getAllMessages", verifyAdmin ,messageController.getAllMessages)
+messageRoute.get("/getAllMessages" ,messageController.getAllMessages)
 
 export default messageRoute;
