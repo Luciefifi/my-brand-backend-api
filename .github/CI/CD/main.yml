@@ -2,7 +2,7 @@
 
 
 
-name: CI/CD
+name: Build
 
 on:
   push:
