@@ -1,4 +1,6 @@
 
+
+![example workflow](https://github.com/Luciefifi/my-brand-backend-api/actions/workflows/main.yml/badge.svg)
 ![check-code-coverage](https://img.shields.io/badge/code--coverage-81.44%25-green)
 <!-- <img alt="Codecov" src="https://img.shields.io/codecov/c/gh/Luciefifi/my-brand-backend-api?color=green&style=for-the-badge"> -->
 
