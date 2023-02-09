@@ -1,6 +1,6 @@
 
 
-![example workflow]([https://github.com/Luciefifi/my-brand-backend-api/actions/workflows/main.yml/badge.svg](https://github.com/Luciefifi/my-brand-backend-api/actions/workflows/main.yml/badge.svg))
+![example workflow](https://github.com/Luciefifi/my-brand-backend-api/actions/workflows/main.yml/badge.svg)
 ![check-code-coverage](https://img.shields.io/badge/code--coverage-81.44%25-green)
 
 # repository name
