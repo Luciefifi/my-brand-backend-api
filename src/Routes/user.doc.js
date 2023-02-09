@@ -125,7 +125,31 @@ const registerUser = {
         },
     },
 };
+//loggedin user swagger documentation
+const loggedInUser = {
+    
+    tags:["Users"],
+    description: "logged in user",
+    security: [
+        {
+          auth_token: [],
+        },
+      ],
+    responses:{
+        200:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+                      
 
+                    },
+                },
+            },
+        },
+    },
+};
 
 //get single userby id swagger documentation 
 const singleUser={
@@ -181,6 +205,9 @@ const singleUser={
     "/api/getSingleUser/{id}":{
         get:singleUser
       },
+      "/api/loggedInUser": {
+        get:loggedInUser
+    },
 
 
 
