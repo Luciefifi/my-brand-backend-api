@@ -13,4 +13,6 @@ userRoute.get("/loggedInUser", authLogin, UserController.loggedInUser);
 userRoute.get("/getSingleUser/:id",verifyAdmin,UserController.getSingleUser);
 userRoute.get("/getAllUsers",UserController.getAllUsers)
 
+
+
 export default userRoute

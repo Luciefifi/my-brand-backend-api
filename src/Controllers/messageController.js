@@ -70,6 +70,32 @@ class messageController {
             res.status(404).json(error.message);
         }
     }
+
+    //delete a message 
+
+    static async deleteMessage(req, res) {
+      try {
+        const message = await Message.findById(req.params.id)
+        if(!message){
+          res.status(404).json({
+            status :"fail",
+            error :"message not found"
+          });
+          return;
+        }
+  
+        await message.remove()
+        res.status(200).json({
+          status:"success",
+          "successMessage":"message deleted successfully",
+        });
+        
+      } catch (error) {
+        res.status(500).json({
+          staus : "fail",
+           error: error.message });
+      }
+    }
     
       }
 
