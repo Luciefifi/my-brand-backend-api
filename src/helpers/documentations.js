@@ -20,7 +20,7 @@ const swaggerDocumentations ={
                 name:"development server"
             },
             {
-                url: 'https://portifolio-yanjye.onrender.com',
+                url: 'https://nice-ruby-squid-slip.cyclic.app',
                 description: 'Production server',
               },
         ],
