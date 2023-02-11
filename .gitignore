@@ -2,3 +2,5 @@ node_modules
 .env
 dist
 
+temp_auto_push.bat
+temp_interactive_push.bat

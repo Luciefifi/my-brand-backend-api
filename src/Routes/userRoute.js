@@ -1,6 +1,5 @@
 import express from 'express'
 import UserController from '../Controllers/userController'
-import User from '../Models/userModel';
 import authLogin from '../middleware/authentication'
 import verifyAdmin from '../middleware/verifyAdmin';
 
